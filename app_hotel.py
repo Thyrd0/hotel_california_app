@@ -24,7 +24,7 @@ def init_connection():
             database=os.environ.get("DB_NAME"),
             user=os.environ.get("DB_USER"),
             password=os.environ.get("DB_PASSWORD"),
-            port=int(os.environ.get("DB_PORT", "5432")) 
+            port=int(os.environ.get("DB_PORT", "6543")) 
         )
         return conn
     except Exception as e:

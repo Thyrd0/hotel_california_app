@@ -1,4 +1,5 @@
 import streamlit as st
+import os 
 import pandas as pd
 import psycopg2
 from datetime import datetime, timedelta, date
@@ -19,11 +20,11 @@ st.set_page_config(
 def init_connection():
     try:
         conn = psycopg2.connect(
-            host=st.secrets["DB_HOST"],
-            database=st.secrets["DB_NAME"],
-            user=st.secrets["DB_USER"],
-            password=st.secrets["DB_PASSWORD"],
-            port=st.secrets["DB_PORT"]
+            host=os.environ.get("DB_HOST"),
+            database=os.environ.get("DB_NAME"),
+            user=os.environ.get("DB_USER"),
+            password=os.environ.get("DB_PASSWORD"),
+            port=int(os.environ.get("DB_PORT", "5432")) 
         )
         return conn
     except Exception as e:
